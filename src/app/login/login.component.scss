@@ -14,7 +14,6 @@
   }
   .desc {
     font-size: 34px;
-
     font-family: 'Aladin', cursive;
     letter-spacing: 5px;
     position: absolute;
@@ -35,7 +34,7 @@
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
-    position:absolute;
+    position: absolute;
     bottom: 50px;
     right: 50px;
     box-shadow: 5px 5px 20px #383838;
@@ -45,9 +44,16 @@
     label {
       font-weight: bold;
     }
-    .btn-container{
+    .btn-container {
+      position: relative;
       .btn {
         margin-top: 30px;
+      }
+      .error {
+        position: absolute;
+        top: 32px;
+        right: 0px;
+        color: red;
       }
     }
   }

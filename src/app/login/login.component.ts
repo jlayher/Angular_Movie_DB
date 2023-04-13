@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
+import { AuthService } from '../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,8 @@ export class LoginComponent implements OnInit {
   password = "";
   errorMsg = "";
 
+  constructor(private auth: AuthService, private router: Router) { }
+
   ngOnInit(): void {
   }
 
@@ -19,6 +23,15 @@ export class LoginComponent implements OnInit {
       this.errorMsg = "Username is required";
     } else if (this.password.trim().length === 0) {
      this.errorMsg = "Password is required";
+    } else {
+      this.errorMsg = "";
+      let res = this.auth.login(this.username, this.password);
+      if (res === 200) {
+        this.router.navigate(['home']);
+      }
+      if (res === 403) {
+        this.errorMsg = "Authorization failed";
+      }
     }
   }
 }
